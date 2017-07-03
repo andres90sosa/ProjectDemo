@@ -28,5 +28,22 @@ namespace ProjectDemo.Controllers
 
             return View();
         }
+
+        public ActionResult MostrarTodos()
+        {
+            var videoJuegos = db.VideoJuegos.ToList();
+            return PartialView("_MostrarTodos", videoJuegos);
+        }
+
+        public ActionResult MostrarVideoJuego(int id)
+        {
+            VideoJuego videoJuego = db.VideoJuegos.Find(id);
+
+            if(videoJuego == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_MostrarVideoJuego", videoJuego);
+        }
     }
 }
