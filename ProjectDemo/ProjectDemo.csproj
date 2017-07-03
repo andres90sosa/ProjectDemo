@@ -221,6 +221,8 @@
     <Content Include="Views\VideoJuegos\Details.cshtml" />
     <Content Include="Views\VideoJuegos\Edit.cshtml" />
     <Content Include="Views\VideoJuegos\Index.cshtml" />
+    <Content Include="Views\Home\_MostrarTodos.cshtml" />
+    <Content Include="Views\Home\_MostrarVideoJuego.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
