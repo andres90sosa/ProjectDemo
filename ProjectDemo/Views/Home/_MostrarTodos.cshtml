@@ -3,7 +3,7 @@
 <div class="list-group">
     @foreach (var item in Model)
     {
-        <a data-url="@Url.Content(string.Format("~/Home/MostrarVideoJuego/{0}",item.Id))" class="list-group-item">
+        <a data-url="@Url.Content(string.Format("~/Home/MostrarVideoJuego/{0}",item.Id))" class="list-group-item" style="cursor:pointer;">
             @item.Nombre
         </a>
     }
