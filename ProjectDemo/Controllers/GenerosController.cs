@@ -10,112 +10,107 @@ using ProjectDemo.Models;
 
 namespace ProjectDemo.Controllers
 {
-    public class VideoJuegosController : Controller
+    public class GenerosController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: /VideoJuegos/
+        // GET: /Generos/
         public ActionResult Index()
         {
-            var videojuegos = db.VideoJuegos.Include(v => v.Genero);
-            return View(videojuegos.ToList());
+            return View(db.Generos.ToList());
         }
 
-        // GET: /VideoJuegos/Details/5
+        // GET: /Generos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VideoJuego videojuego = db.VideoJuegos.Find(id);
-            if (videojuego == null)
+            Genero genero = db.Generos.Find(id);
+            if (genero == null)
             {
                 return HttpNotFound();
             }
-            return View(videojuego);
+            return View(genero);
         }
 
-        // GET: /VideoJuegos/Create
+        // GET: /Generos/Create
         public ActionResult Create()
         {
-            ViewBag.GeneroId = new SelectList(db.Generos, "Id", "Nombre");
             return View();
         }
 
-        // POST: /VideoJuegos/Create
+        // POST: /Generos/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,Nombre,Descripcion,ImagenUrl,GeneroId")] VideoJuego videojuego)
+        public ActionResult Create([Bind(Include="Id,Nombre,Descripcion")] Genero genero)
         {
             if (ModelState.IsValid)
             {
-                db.VideoJuegos.Add(videojuego);
+                db.Generos.Add(genero);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.GeneroId = new SelectList(db.Generos, "Id", "Nombre", videojuego.GeneroId);
-            return View(videojuego);
+            return View(genero);
         }
 
-        // GET: /VideoJuegos/Edit/5
+        // GET: /Generos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VideoJuego videojuego = db.VideoJuegos.Find(id);
-            if (videojuego == null)
+            Genero genero = db.Generos.Find(id);
+            if (genero == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.GeneroId = new SelectList(db.Generos, "Id", "Nombre", videojuego.GeneroId);
-            return View(videojuego);
+            return View(genero);
         }
 
-        // POST: /VideoJuegos/Edit/5
+        // POST: /Generos/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,Nombre,Descripcion,ImagenUrl,GeneroId")] VideoJuego videojuego)
+        public ActionResult Edit([Bind(Include="Id,Nombre,Descripcion")] Genero genero)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(videojuego).State = EntityState.Modified;
+                db.Entry(genero).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.GeneroId = new SelectList(db.Generos, "Id", "Nombre", videojuego.GeneroId);
-            return View(videojuego);
+            return View(genero);
         }
 
-        // GET: /VideoJuegos/Delete/5
+        // GET: /Generos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VideoJuego videojuego = db.VideoJuegos.Find(id);
-            if (videojuego == null)
+            Genero genero = db.Generos.Find(id);
+            if (genero == null)
             {
                 return HttpNotFound();
             }
-            return View(videojuego);
+            return View(genero);
         }
 
-        // POST: /VideoJuegos/Delete/5
+        // POST: /Generos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            VideoJuego videojuego = db.VideoJuegos.Find(id);
-            db.VideoJuegos.Remove(videojuego);
+            Genero genero = db.Generos.Find(id);
+            db.Generos.Remove(genero);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

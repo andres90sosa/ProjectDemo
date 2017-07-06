@@ -159,12 +159,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GenerosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VideoJuegosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706260131068_InitialCreate.cs" />
+    <Compile Include="Migrations\201706260131068_InitialCreate.Designer.cs">
+      <DependentUpon>201706260131068_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707060555207_Generos.cs" />
+    <Compile Include="Migrations\201707060555207_Generos.Designer.cs">
+      <DependentUpon>201707060555207_Generos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Genero.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\VideoJuego.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -223,6 +234,11 @@
     <Content Include="Views\VideoJuegos\Index.cshtml" />
     <Content Include="Views\Home\_MostrarTodos.cshtml" />
     <Content Include="Views\Home\_MostrarVideoJuego.cshtml" />
+    <Content Include="Views\Generos\Create.cshtml" />
+    <Content Include="Views\Generos\Delete.cshtml" />
+    <Content Include="Views\Generos\Details.cshtml" />
+    <Content Include="Views\Generos\Edit.cshtml" />
+    <Content Include="Views\Generos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -233,6 +249,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706260131068_InitialCreate.resx">
+      <DependentUpon>201706260131068_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707060555207_Generos.resx">
+      <DependentUpon>201707060555207_Generos.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
